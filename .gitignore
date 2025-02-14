@@ -1,0 +1,12 @@
+node_modules/
+
+dist/
+build/
+
+.vscode/
+
+logs
+*.log
+
+.DS_Store
+.env

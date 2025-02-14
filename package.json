@@ -1,0 +1,34 @@
+{
+  "name": "prompt-keeper",
+  "version": "1.0.0",
+  "description": "A CLI tool to manage AI prompts associated with code files",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "prompt-keeper": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/cli.js",
+    "dev": "ts-node src/cli.ts",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "cli",
+    "ai",
+    "prompt",
+    "management"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.11.19",
+    "@types/uuid": "^9.0.8",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "commander": "^12.0.0",
+    "uuid": "^9.0.1"
+  }
+}
