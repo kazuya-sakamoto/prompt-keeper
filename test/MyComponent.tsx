@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 // prompt-id: 8ffd78c0-d00c-433d-a8d5-af111cc79020
 const MyComponent: React.FC = () => {
@@ -9,4 +9,5 @@ const MyComponent: React.FC = () => {
   );
 };
 
-export default MyComponent;
+// prompt-id: b19e27f8-9b25-4c2f-a011-da3898206f82
+export default memo(MyComponent);

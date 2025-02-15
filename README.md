@@ -4,7 +4,6 @@ A CLI tool for managing AI prompts linked to code files.
 
 ![terminal](https://github.com/user-attachments/assets/a62cf820-edf5-47c6-baf6-fc1483d763e1)
 
-
 ## Features
 
 - Manage prompt history for each code file
@@ -79,14 +78,21 @@ Example: For `MyComponent.tsx` → `MyComponent.prompt.json`
 
 ```json
 {
-  "file": "src/MyComponent",
+  "file": "test/MyComponent.tsx",
   "prompts": [
     {
-      "id": "uuid",
-      "prompt": "Implement a counter component in React",
-      "model": "claude-3.5-sonnet-v2",
-      "createdAt": "2025-02-14T15:00:45.008Z",
+      "id": "8ffd78c0-d00c-433d-a8d5-af111cc79020",
+      "prompt": "This is a test prompt, and it's a library that can manage what kind of prompts were used to implement code in the past. This is a sample saved prompt.",
+      "model": "o3-mini",
+      "createdAt": "2025-02-15T02:00:22.206Z",
       "version": 1
+    },
+    {
+      "id": "b19e27f8-9b25-4c2f-a011-da3898206f82",
+      "prompt": "Implement memoization for this component",
+      "model": "o3-mini-high",
+      "createdAt": "2025-02-15T12:10:18.760Z",
+      "version": 2
     }
   ]
 }
@@ -95,8 +101,19 @@ Example: For `MyComponent.tsx` → `MyComponent.prompt.json`
 It also adds a prompt ID comment to your code file:
 
 ```typescript
-// prompt-id: uuid
-import React from "react";
+import React, { memo } from "react";
+
+// prompt-id: 8ffd78c0-d00c-433d-a8d5-af111cc79020
+const MyComponent: React.FC = () => {
+  return (
+    <div>
+      <h1>Test Component</h1>
+    </div>
+  );
+};
+
+// prompt-id: b19e27f8-9b25-4c2f-a011-da3898206f82
+export default memo(MyComponent);
 ```
 
 ## Development

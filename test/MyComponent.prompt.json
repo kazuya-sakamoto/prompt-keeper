@@ -7,6 +7,13 @@
       "model": "o3-mini",
       "createdAt": "2025-02-15T02:00:22.206Z",
       "version": 1
+    },
+    {
+      "id": "b19e27f8-9b25-4c2f-a011-da3898206f82",
+      "prompt": "Implement memoization for this component",
+      "model": "o3-mini-high",
+      "createdAt": "2025-02-15T12:10:18.760Z",
+      "version": 2
     }
   ]
 }
