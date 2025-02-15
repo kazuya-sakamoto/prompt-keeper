@@ -1,8 +1,33 @@
-# prompt-keeper
+# prompt-keeper 🚀
 
-A CLI tool for managing AI prompts linked to code files.
+> A CLI tool for managing AI prompts linked to code files, making your AI-assisted development traceable and maintainable.
 
-![terminal](https://github.com/user-attachments/assets/a62cf820-edf5-47c6-baf6-fc1483d763e1)
+[![npm version](https://badge.fury.io/js/prompt-keeper.svg)](https://www.npmjs.com/package/prompt-keeper)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![TypeScript](https://badges.frapsoft.com/typescript/code/typescript.svg?v=101)](https://github.com/ellerbrock/typescript-badges/)
+
+## Why prompt-keeper? 🤔
+
+- 📝 **Track Your AI Conversations**: Keep a history of all AI prompts used in your codebase
+- 🔍 **Code Traceability**: Easily find which AI prompts generated specific code sections
+- 🤖 **Multi-Model Support**: Works with popular AI models (Claude, GPT-4, Gemini, etc.)
+- 🎯 **Developer Friendly**: Simple CLI interface with interactive mode
+
+## Quick Demo
+
+![Demo GIF](path_to_demo.gif)
+
+## Quick Start 🚀
+
+```bash
+# Install globally
+npm install -g prompt-keeper
+
+# Start using with interactive mode
+pk i your-file.ts
+```
+
+[View full documentation](https://github.com/kazuya-sakamoto/prompt-keeper#readme)
 
 ## Features
 
