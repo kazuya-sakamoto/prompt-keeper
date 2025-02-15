@@ -61,3 +61,23 @@ export const ensureFileExists = async (filePath: string): Promise<void> => {
     throw new Error(`指定されたファイル ${filePath} が存在しません。`);
   }
 };
+
+export const readFileContent = async (filePath: string): Promise<string[]> => {
+  const content = await fs.readFile(filePath, "utf-8");
+  return content.split("\n");
+};
+
+export const addPromptComment = async (
+  filePath: string,
+  promptId: string,
+  lineNumber: number
+): Promise<void> => {
+  const lines = await readFileContent(filePath);
+  const extension = path.extname(filePath);
+  const commentPrefix = extension === ".py" ? "#" : "//";
+
+  const commentLine = `${commentPrefix} prompt-id: ${promptId}`;
+  lines.splice(lineNumber, 0, commentLine);
+
+  await fs.writeFile(filePath, lines.join("\n"), "utf-8");
+};
