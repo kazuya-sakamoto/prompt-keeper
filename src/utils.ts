@@ -58,7 +58,7 @@ export const ensureFileExists = async (filePath: string): Promise<void> => {
   try {
     await fs.access(filePath);
   } catch (error) {
-    throw new Error(`指定されたファイル ${filePath} が存在しません。`);
+    throw new Error(`File ${filePath} does not exist.`);
   }
 };
 

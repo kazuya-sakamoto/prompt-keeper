@@ -1,40 +1,78 @@
 # prompt-keeper
 
-コードファイルに紐づけて AI プロンプトを管理する CLI ツール。
+A CLI tool for managing AI prompts linked to code files.
 
-## インストール
+## Features
+
+- Manage prompt history for each code file
+- Version control for prompts
+- AI model specification support
+- Link prompts to code files with comments
+- Flexible comment insertion position
+- Interactive prompt input support
+
+## Installation
 
 ```bash
 npm install -g prompt-keeper
 ```
 
-## 使用方法
+## Usage
 
-### プロンプトの追加
+The tool provides two command aliases for easier use:
 
-```bash
-prompt-keeper set <ファイルパス> <プロンプト> [オプション]
-```
+- `pk`: Short for "prompt-keeper"
+- `prompt-keeper`: Full command name
 
-#### オプション
+Both commands work exactly the same way. Use whichever you prefer.
 
-- `-m, --model <model>`: AI モデルを指定（例：gpt-4）
-
-#### 例
+### Interactive Mode
 
 ```bash
-# モデル指定あり
-prompt-keeper set ./src/MyComponent.tsx "Reactでカウンターコンポーネントを実装して" --model gpt-4
-
-# モデル指定なし
-prompt-keeper set ./src/MyComponent.tsx "Reactでフォームコンポーネントを実装して"
+pk i <file-path>
+# or
+pk interactive <file-path>
+# or
+prompt-keeper interactive <file-path>
 ```
 
-### 生成されるファイル
+The interactive mode guides you through the following steps:
 
-指定したコードファイルと同じディレクトリに、`{ファイル名}.prompt.json`という形式でプロンプトファイルが生成されます。
+1. Enter your prompt
+2. Select an AI model from the available options:
+   - Claude 3.5 Sonnet v2
+   - O3-mini
+   - O3-mini High
+   - Gemini 2.0 Flash
+   - Gemini 1.5 Pro
+   - Gemini 2.0 Experimental Advanced
+   - GPT-4o
+   - GPT-4o Mini
+   - Custom
+3. Choose where to add the prompt ID comment:
+   - Beginning of file
+   - End of file
+   - Specific line number
 
-例：`MyComponent.tsx` → `MyComponent.prompt.json`
+### Command Line Mode
+
+```bash
+pk s <file-path> "your prompt" --model <model-name>
+# or
+pk set <file-path> "your prompt" --model <model-name>
+# or
+prompt-keeper set <file-path> "your prompt" --model <model-name>
+```
+
+#### Options
+
+- `-m, --model <model>`: Specify AI model (e.g., claude-3.5-sonnet-v2)
+
+### Generated Files
+
+The tool generates a prompt file in the same directory as your code file with the format `{filename}.prompt.json`.
+
+Example: For `MyComponent.tsx` → `MyComponent.prompt.json`
 
 ```json
 {
@@ -42,8 +80,8 @@ prompt-keeper set ./src/MyComponent.tsx "Reactでフォームコンポーネン�
   "prompts": [
     {
       "id": "uuid",
-      "prompt": "Reactでカウンターコンポーネントを実装して",
-      "model": "gpt-4",
+      "prompt": "Implement a counter component in React",
+      "model": "claude-3.5-sonnet-v2",
       "createdAt": "2025-02-14T15:00:45.008Z",
       "version": 1
     }
@@ -51,13 +89,49 @@ prompt-keeper set ./src/MyComponent.tsx "Reactでフォームコンポーネン�
 }
 ```
 
-## 特徴
+It also adds a prompt ID comment to your code file:
 
-- 📝 コードファイルごとにプロンプト履歴を管理
-- 🔢 バージョン管理機能
-- 🤖 AI モデルの指定が可能
-- 🔍 プロンプトをコードと別ファイルで管理
+```typescript
+// prompt-id: uuid
+import React from "react";
+```
 
-## ライセンス
+## Development
 
-ISC
+### Local Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/kazuya-sakamoto/prompt-keeper.git
+cd prompt-keeper
+
+# Install dependencies
+npm install
+
+# Link package globally (Option 1)
+npm link
+
+# Now you can use the pk command directly
+pk i <file-path>
+
+# Or use npm script without linking (Option 2)
+npm run pk -- i <file-path>
+```
+
+### Build
+
+```bash
+npm run build
+```
+
+## Requirements
+
+- Node.js >= 14.0.0
+
+## License
+
+MIT © [Kazuya Sakamoto](https://github.com/kazuya-sakamoto)
+
+## Contributing
+
+Issues and Pull Requests are welcome!

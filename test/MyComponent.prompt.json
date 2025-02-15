@@ -1,47 +1,12 @@
 {
-  "file": "test/MyComponent",
+  "file": "test/MyComponent.tsx",
   "prompts": [
     {
-      "id": "b3c8e059-6948-4979-b6a8-dd9508be90db",
-      "prompt": "Reactでシンプルなカウンターコンポーネントを実装して",
-      "model": "gpt-4",
-      "createdAt": "2025-02-14T15:22:49.527Z",
+      "id": "8ffd78c0-d00c-433d-a8d5-af111cc79020",
+      "prompt": "This is a test prompt, and it's a library that can manage what kind of prompts were used to implement code in the past. This is a sample saved prompt.",
+      "model": "o3-mini",
+      "createdAt": "2025-02-15T02:00:22.206Z",
       "version": 1
-    },
-    {
-      "id": "8a0e1827-ac65-4e69-b2e4-576da7d27634",
-      "prompt": "Reactでフォームコンポーネントを実装して",
-      "model": null,
-      "createdAt": "2025-02-14T15:23:26.459Z",
-      "version": 2
-    },
-    {
-      "id": "4d259379-085c-4d27-85c3-897ce3ed8e2f",
-      "prompt": "Reactでフォームコンポーネントを実装して",
-      "model": null,
-      "createdAt": "2025-02-14T15:24:46.772Z",
-      "version": 3
-    },
-    {
-      "id": "94935c8e-728f-49bc-99f9-e777b6953bf7",
-      "prompt": "Reactでフォームコンポーネントを実装して",
-      "model": null,
-      "createdAt": "2025-02-14T15:56:36.638Z",
-      "version": 4
-    },
-    {
-      "id": "293cf689-2b9f-4d56-bbb1-c34adb488ebe",
-      "prompt": "っっっs",
-      "model": "gpt-4o",
-      "createdAt": "2025-02-14T17:14:04.360Z",
-      "version": 5
-    },
-    {
-      "id": "35c1ac11-0dec-4d20-a5a3-317b66c1266a",
-      "prompt": "test prompt",
-      "model": "gpt-4",
-      "createdAt": "2025-02-14T17:15:53.838Z",
-      "version": 6
     }
   ]
 }

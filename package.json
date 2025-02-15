@@ -5,30 +5,53 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
-    "prompt-keeper": "./dist/cli.js"
+    "prompt-keeper": "./dist/cli.js",
+    "pk": "./dist/cli.js"
   },
   "scripts": {
     "build": "tsc",
     "start": "node dist/cli.js",
     "dev": "ts-node src/cli.ts",
-    "prepare": "npm run build"
+    "pk": "ts-node src/cli.ts",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"No tests specified\" && exit 0"
   },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "keywords": [
     "cli",
     "ai",
     "prompt",
-    "management"
+    "management",
+    "code",
+    "documentation",
+    "typescript"
   ],
-  "author": "",
-  "license": "ISC",
+  "author": "Your Name <your.email@example.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/prompt-keeper.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/prompt-keeper/issues"
+  },
+  "homepage": "https://github.com/yourusername/prompt-keeper#readme",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  },
   "devDependencies": {
     "@types/node": "^20.11.19",
     "@types/uuid": "^9.0.8",
+    "@types/inquirer": "^9.0.7",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "@types/inquirer": "^9.0.7",
     "commander": "^12.0.0",
     "inquirer": "^12.4.1",
     "uuid": "^9.0.1"

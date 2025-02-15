@@ -12,13 +12,14 @@ import { SetCommandOptions } from "./types";
 import inquirer from "inquirer";
 
 const AI_MODELS = [
-  { name: "GPT-4", value: "gpt-4" },
-  { name: "GPT-4 Turbo", value: "gpt-4-turbo-preview" },
-  { name: "GPT-3.5 Turbo", value: "gpt-3.5-turbo" },
-  { name: "Claude 3 Opus", value: "claude-3-opus" },
-  { name: "Claude 3 Sonnet", value: "claude-3-sonnet" },
-  { name: "Claude 3 Haiku", value: "claude-3-haiku" },
-  { name: "Gemini Pro", value: "gemini-pro" },
+  { name: "Claude 3.5 Sonnet v2", value: "claude-3.5-sonnet-v2" },
+  { name: "O3-mini", value: "o3-mini" },
+  { name: "O3-mini High", value: "o3-mini-high" },
+  { name: "Gemini 2.0 Flash", value: "gemini-2.0-flash" },
+  { name: "Gemini 1.5 Pro", value: "gemini-1.5-pro" },
+  { name: "Gemini 2.0 Experimental Advanced", value: "gemini-2.0-exp-adv" },
+  { name: "GPT-4o", value: "gpt-4o" },
+  { name: "GPT-4o Mini", value: "gpt-4o-mini" },
   { name: "カスタム", value: "custom" },
 ] as const;
 
@@ -44,14 +45,14 @@ export const setCommand = async (
     promptFile.prompts.push(newPrompt);
     await writePromptFile(promptFilePath, promptFile);
 
-    console.log(`✨ プロンプトを保存しました：${promptFilePath}`);
-    console.log(`📝 プロンプト：${promptText}`);
-    console.log(`🔢 バージョン：${newVersion}`);
+    console.log(`Prompt saved: ${promptFilePath}`);
+    console.log(`Prompt: ${promptText}`);
+    console.log(`Version: ${newVersion}`);
     if (options.model) {
-      console.log(`🤖 モデル：${options.model}`);
+      console.log(`Model: ${options.model}`);
     }
   } catch (error) {
-    console.error("エラー:", (error as Error).message);
+    console.error("Error:", (error as Error).message);
     process.exit(1);
   }
 };
@@ -66,15 +67,15 @@ export const interactiveCommand = async (filePath: string): Promise<void> => {
       {
         type: "input",
         name: "prompt",
-        message: "プロンプトを入力してください:",
-        validate: (input) => input.trim().length > 0 || "プロンプトは必須です",
+        message: "Enter your prompt:",
+        validate: (input) => input.trim().length > 0 || "Prompt is required",
       },
       {
         type: "list",
         name: "modelChoice",
-        message: "使用するモデルを選択してください:",
+        message: "Select the model to use:",
         choices: [
-          { name: "モデルを指定しない", value: null },
+          { name: "No model specified", value: null },
           ...AI_MODELS.map((model) => ({
             name: model.name,
             value: model.value,
@@ -84,9 +85,10 @@ export const interactiveCommand = async (filePath: string): Promise<void> => {
       {
         type: "input",
         name: "customModel",
-        message: "カスタムモデル名を入力してください:",
+        message: "Enter custom model name:",
         when: (answers) => answers.modelChoice === "custom",
-        validate: (input) => input.trim().length > 0 || "モデル名は必須です",
+        validate: (input) =>
+          input.trim().length > 0 || "Model name is required",
       },
     ]);
 
@@ -105,7 +107,7 @@ export const interactiveCommand = async (filePath: string): Promise<void> => {
 
     // ファイルの内容を表示
     const lines = await readFileContent(absoluteFilePath);
-    console.log("\nファイルの内容:");
+    console.log("\nFile contents:");
     lines.forEach((line, index) => {
       console.log(`${String(index + 1).padStart(3, " ")} | ${line}`);
     });
@@ -115,11 +117,11 @@ export const interactiveCommand = async (filePath: string): Promise<void> => {
       {
         type: "list",
         name: "position",
-        message: "プロンプトIDをコメントとして追加する位置を選択してください:",
+        message: "Select where to add the prompt ID comment:",
         choices: [
-          { name: "ファイルの先頭", value: 0 },
-          { name: "ファイルの末尾", value: lines.length },
-          { name: "特定の行を選択", value: "custom" },
+          { name: "Beginning of file", value: 0 },
+          { name: "End of file", value: lines.length },
+          { name: "Select specific line", value: "custom" },
         ],
       },
     ]);
@@ -130,27 +132,27 @@ export const interactiveCommand = async (filePath: string): Promise<void> => {
         {
           type: "number",
           name: "lineNum",
-          message: "何行目に追加しますか？",
+          message: "Which line number?",
           validate: (input: any) =>
             (typeof input === "number" && input > 0 && input <= lines.length) ||
-            "有効な行番号を入力してください",
+            "Please enter a valid line number",
         },
       ]);
-      lineNumber = lineNum - 1; // 1-indexedから0-indexedに変換
+      lineNumber = lineNum - 1;
     }
 
     // コメントの追加
     await addPromptComment(absoluteFilePath, newPrompt.id, lineNumber);
 
-    console.log(`✨ プロンプトを保存しました：${promptFilePath}`);
-    console.log(`📝 プロンプト：${answers.prompt}`);
-    console.log(`🔢 バージョン：${newVersion}`);
+    console.log(`Prompt saved: ${promptFilePath}`);
+    console.log(`Prompt: ${answers.prompt}`);
+    console.log(`Version: ${newVersion}`);
     if (modelToUse) {
-      console.log(`🤖 モデル：${modelToUse}`);
+      console.log(`Model: ${modelToUse}`);
     }
-    console.log(`🔗 プロンプトID：${newPrompt.id}`);
+    console.log(`Prompt ID: ${newPrompt.id}`);
   } catch (error) {
-    console.error("エラー:", (error as Error).message);
+    console.error("Error:", (error as Error).message);
     process.exit(1);
   }
 };
