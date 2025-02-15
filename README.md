@@ -2,6 +2,9 @@
 
 A CLI tool for managing AI prompts linked to code files.
 
+![terminal](https://github.com/user-attachments/assets/a62cf820-edf5-47c6-baf6-fc1483d763e1)
+
+
 ## Features
 
 - Manage prompt history for each code file
