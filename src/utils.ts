@@ -23,29 +23,23 @@ export const createNewPrompt = (
 };
 
 export const readPromptFile = async (
-  promptFilePath: string
+  promptFilePath: string,
+  originalFilePath: string
 ): Promise<PromptFile> => {
   try {
     const content = await fs.readFile(promptFilePath, "utf-8");
     try {
       return JSON.parse(content);
     } catch (parseError) {
-      // JSONのパースに失敗した場合は新規ファイルとして扱う
       return {
-        file: path.relative(
-          process.cwd(),
-          promptFilePath.replace(".prompt.json", "")
-        ),
+        file: originalFilePath,
         prompts: [],
       };
     }
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code === "ENOENT") {
       return {
-        file: path.relative(
-          process.cwd(),
-          promptFilePath.replace(".prompt.json", "")
-        ),
+        file: originalFilePath,
         prompts: [],
       };
     }
