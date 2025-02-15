@@ -15,7 +15,7 @@
 
 ## Quick Demo
 
-![Demo GIF](path_to_demo.gif)
+![terminal](https://github.com/user-attachments/assets/a62cf820-edf5-47c6-baf6-fc1483d763e1)
 
 ## Quick Start 🚀
 
