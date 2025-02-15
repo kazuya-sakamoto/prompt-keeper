@@ -5,8 +5,8 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
-    "prompt-keeper": "./dist/cli.js",
-    "pk": "./dist/cli.js"
+    "prompt-keeper": "dist/cli.js",
+    "pk": "dist/cli.js"
   },
   "scripts": {
     "build": "tsc",
@@ -31,15 +31,15 @@
     "documentation",
     "typescript"
   ],
-  "author": "Your Name <your.email@example.com>",
+  "author": "Kazuya Sakamoto",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yourusername/prompt-keeper.git"
+    "url": "git+https://github.com/kazuya-sakamoto/prompt-keeper.git"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/prompt-keeper/issues"
+    "url": "https://github.com/kazuya-sakamoto/prompt-keeper/issues"
   },
-  "homepage": "https://github.com/yourusername/prompt-keeper#readme",
+  "homepage": "https://github.com/kazuya-sakamoto/prompt-keeper#readme",
   "license": "MIT",
   "engines": {
     "node": ">=14.0.0"
